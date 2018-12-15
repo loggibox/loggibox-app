@@ -17,6 +17,7 @@ declare var google: any;
 export class ProductDetailsPage {
   @ViewChild("map") mapRef: ElementRef;
   image: any;
+  google: any;
 
   constructor(
     private geolocation: Geolocation,
