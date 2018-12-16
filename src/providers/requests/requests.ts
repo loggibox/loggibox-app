@@ -16,14 +16,21 @@ export class RequestsProvider {
   }
 
   getDeliveryList(): Observable<any> {
-    return this.http.get<any>("https://loggibox.herokuapp.com/packets");
+    return this.http.get<any>("https://loggibox.herokuapp.com/packets?delivered=true");
   }
 
   getListAvailableDeliveries(): Observable<any> {
     return this.http.get<any>(
-      "https://loggibox.herokuapp.com/packets?delivered=true"
+      "https://loggibox.herokuapp.com/packets?distribution_center=true"
     );
   }
+
+  getListAvailableDelivering(): Observable<any> {
+    return this.http.get<any>(
+      "https://loggibox.herokuapp.com/packets?delivering=true"
+    );
+  }
+
   update(idPacote: string): Observable<Object> {
 
     let body ={ "delivered": true,

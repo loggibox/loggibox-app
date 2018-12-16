@@ -69,7 +69,7 @@ export class SettingsPage {
 
   ionViewDidLoad() {
     // Build an empty form for the template to render
-    this.http.getListAvailableDeliveries().subscribe(data => {
+    this.http.getListAvailableDelivering().subscribe(data => {
       let response: any;
       response = data.result;
 
@@ -78,7 +78,11 @@ export class SettingsPage {
       console.log(this.availablePackages);
     });
   }
+
+
+
   patch(availablePackage: string){
+    console.log(availablePackage)
     this.http.update(availablePackage).subscribe(data => {
       console.log("foi", data);
     });
