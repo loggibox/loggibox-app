@@ -1,45 +1,62 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ pageTitle }}</ion-title>
+      <ion-row style="display: flex; align-items: center;margin: 0px 10px;">
+          <ion-title>LoggiBox</ion-title>
+          <img src="../../assets/img/logo4.png" alt="" width="50" />
+        </ion-row>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content>
-
-  <form [formGroup]="form" *ngIf="settingsReady">
-    <ion-list *ngIf="page == 'main'">
-      <ion-item>
-        <ion-label>{{ 'SETTINGS_OPTION1' | translate }}</ion-label>
-        <ion-toggle formControlName="option1"></ion-toggle>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>{{ 'SETTINGS_OPTION2' | translate }}</ion-label>
-        <ion-input formControlName="option2"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>{{ 'SETTINGS_OPTION3' | translate }}</ion-label>
-        <ion-select formControlName="option3">
-          <ion-option value="1" checked="true">1</ion-option>
-          <ion-option value="2">2</ion-option>
-          <ion-option value="3">3</ion-option>
-        </ion-select>
-      </ion-item>
-
-      <button ion-item [navPush]="subSettings" [navParams]="profileSettings">
-        {{ 'SETTINGS_PROFILE_BUTTON' | translate }}
-      </button>
-    </ion-list>
-
-    <ion-list *ngIf="page == 'profile'">
-      <ion-item>
-        <ion-label>{{ 'SETTINGS_OPTION4' | translate }}</ion-label>
-        <ion-input formControlName="option4"></ion-input>
-      </ion-item>
-    </ion-list>
-  </form>
-
-</ion-content>
+    <!--
+      <ion-searchbar (ionInput)="getItems($event)" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}"></ion-searchbar>
+    -->
+    <!--
+      <ion-list>
+        <button ion-item (click)="openItem(item)" *ngFor="let item of currentItems">
+          <ion-avatar item-start>
+            <img [src]="item.profilePic" />
+          </ion-avatar>
+          <h2>{{item.name}}</h2>
+          <p>{{item.about}}</p>
+          <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>
+        </button>
+      </ion-list>
+    -->
+  
+    <ion-item> <h2 class="sub-title">Entregas Disponiveis</h2> </ion-item>
+    <ion-item>
+      <ion-list>
+        <ion-card
+          *ngFor="let availablePackage of availablePackages"
+          style=" background-color: lightgray"
+        >
+          <ion-item>
+            <ion-row class="item-line">
+              <ion-col col-2>
+                <ion-avatar item-start>
+                  <img
+                    src="../../assets/img/package.png"
+                  />
+                </ion-avatar>
+              </ion-col>
+              <ion-col col-10>
+                <ion-row>
+                  <h2>{{ availablePackage.delivery_address }}</h2>
+                </ion-row>
+                <ion-row>
+                  <ion-col col-9> <small>40 minutos</small> </ion-col>
+                  <ion-col col-3>
+                    <small>R$ {{ availablePackage.weight }} </small>
+                  </ion-col>
+                  <button (click)="patch(availablePackage.id)">Entregue</button>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-item>
+        </ion-card>
+      </ion-list>
+    </ion-item>
+  </ion-content>

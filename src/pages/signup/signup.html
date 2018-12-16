@@ -1,7 +1,7 @@
 <ion-content style="background: #448FFB;">
   <form (submit)="doSignup()">
-    <ion-list class="myLogin">
-      <img style="margin: auto; padding-left: 15%;" src="{{ photo }}" />
+    <ion-list class="myLogin" >
+      <img style="margin: auto; padding-left: 15%;" src="../../assets/img/logo4.png" />
       <ion-item>
         <ion-label floating>{{ 'NAME' | translate }}</ion-label>
         <ion-input type="text" [(ngModel)]="account.name" name="name"></ion-input>
@@ -28,10 +28,14 @@
         <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
         <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
       </ion-item>
-      <ion-fab>
-          <button ion-fab (click)="takePicture()"> foto </button>
-        </ion-fab>
-      
+
+     <ion-row style="display: inline-flex;">
+          <ion-label floating>Tire uma foto*</ion-label>
+        <ion-fab>
+            <button ion-fab class="" (click)="takePicture()"><ion-icon name="ios-camera"></ion-icon></button>
+          </ion-fab>
+        </ion-row>
+      <br><br><br><br>
       <div padding>
         <button class="loginBtn" ion-button color="primary" block>Cadastrar</button>
       </div>

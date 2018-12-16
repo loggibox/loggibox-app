@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { Settings } from '../../providers';
-
+import { RequestsProvider } from "../../providers/requests/requests";
 /**
  * The Settings page is a simple form that syncs with a Settings provider
  * to enable the user to customize settings for the app.
@@ -18,6 +18,7 @@ import { Settings } from '../../providers';
 export class SettingsPage {
   // Our local settings object
   options: any;
+  availablePackages: Object[];
 
   settingsReady = false;
 
@@ -38,7 +39,8 @@ export class SettingsPage {
     public settings: Settings,
     public formBuilder: FormBuilder,
     public navParams: NavParams,
-    public translate: TranslateService) {
+    public translate: TranslateService,
+    public http: RequestsProvider) {
   }
 
   _buildForm() {
@@ -67,7 +69,19 @@ export class SettingsPage {
 
   ionViewDidLoad() {
     // Build an empty form for the template to render
-    this.form = this.formBuilder.group({});
+    this.http.getListAvailableDeliveries().subscribe(data => {
+      let response: any;
+      response = data.result;
+
+      this.availablePackages = new Array<Object>();
+      this.availablePackages = response;
+      console.log(this.availablePackages);
+    });
+  }
+  patch(availablePackage: string){
+    this.http.update(availablePackage).subscribe(data => {
+      console.log("foi", data);
+    });
   }
 
   ionViewWillEnter() {
