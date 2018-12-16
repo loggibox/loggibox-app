@@ -13,6 +13,7 @@ import {
 
 import { FirstRunPage } from "../pages";
 import { Settings } from "../providers";
+import { WelcomePage } from "../pages/welcome/welcome";
 
 @Component({
   template: `
@@ -38,7 +39,7 @@ import { Settings } from "../providers";
   `
 })
 export class MyApp {
-  rootPage = LoginPage;
+  rootPage = WelcomePage;
   loading: Loading;
 
   @ViewChild(Nav) nav: Nav;

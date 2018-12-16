@@ -7,7 +7,7 @@ import { IonicPage, NavController } from 'ionic-angular';
  * If you'd like to immediately put the user onto a login/signup page,
  * we recommend not using the Welcome page.
 */
-@IonicPage()
+
 @Component({
   selector: 'page-welcome',
   templateUrl: 'welcome.html'

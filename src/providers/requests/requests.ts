@@ -27,9 +27,9 @@ export class RequestsProvider {
   update(idPacote: string): Observable<Object> {
 
     let body ={ "delivered": true,
-    "distribution_center": false,
-    "delivering": false
-  };
+      "distribution_center": false,
+      "delivering": false
+    };
 
     return this.http.patch<Object>("https://loggibox.herokuapp.com/packets/" + idPacote, body, {
       headers: this.headers

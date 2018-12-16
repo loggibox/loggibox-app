@@ -9,7 +9,7 @@ declare var google: any;
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: "page-product-details",
   templateUrl: "product-details.html"
