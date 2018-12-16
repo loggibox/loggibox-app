@@ -1,5 +1,5 @@
 page-list-master {
-  background-color: #00baff;
+  // background-color: #00baff;
 }
 
 .item-line {
@@ -15,4 +15,14 @@ ion-title{
 .toolbar-title-md{
   font-weight: bold !important;
   color: #448FFB !important;
+}
+.card-md{
+  border-radius: 10px;
+}
+.sub-title{
+  margin-left: 10px; 
+  color: orange;
+  text-align: center;
+  font-weight: bold !important;
+  font-size: 20px !important;
 }

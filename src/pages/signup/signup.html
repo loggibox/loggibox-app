@@ -1,25 +1,19 @@
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>{{ 'SIGNUP_TITLE' | translate }}</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content>
+<ion-content style="background: #448FFB;">
   <form (submit)="doSignup()">
-    <ion-list>
-
+    <ion-list class="myLogin">
+      <img style="margin: auto; padding-left: 15%;" src="{{ photo }}" />
       <ion-item>
-        <ion-label fixed>{{ 'NAME' | translate }}</ion-label>
+        <ion-label floating>{{ 'NAME' | translate }}</ion-label>
         <ion-input type="text" [(ngModel)]="account.name" name="name"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
         <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
       </ion-item>
+      <ion-item>
+          <ion-label floating>arquivo</ion-label>
+          <ion-input type="file"  name="email"></ion-input>
+        </ion-item>
 
       <!--
       Want to add a Username? Here you go:
@@ -31,12 +25,12 @@
       -->
 
       <ion-item>
-        <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
+        <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
         <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
       </ion-item>
-
+      <button (click)="takePicture()"> foto </button>
       <div padding>
-        <button ion-button color="primary" block>{{ 'SIGNUP_BUTTON' | translate }}</button>
+        <button class="loginBtn" ion-button color="primary" block>Cadastrar</button>
       </div>
 
     </ion-list>
