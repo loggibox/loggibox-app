@@ -1,19 +1,26 @@
-import { Component } from '@angular/core';
-import { IonicPage, ModalController, NavController } from 'ionic-angular';
+import { Component } from "@angular/core";
+import { IonicPage, ModalController, NavController } from "ionic-angular";
 
-import { Item } from '../../models/item';
-import { Items } from '../../providers';
+import { Item } from "../../models/item";
+import { Items } from "../../providers";
+import { RequestsProvider } from "../../providers/requests/requests";
 
 @IonicPage()
 @Component({
-  selector: 'page-list-master',
-  templateUrl: 'list-master.html'
+  selector: "page-list-master",
+  templateUrl: "list-master.html"
 })
 export class ListMasterPage {
   currentItems: Item[];
-  title: 'Lista de Entregas'
+  title: "Lista de Entregas";
+  packages = [];
 
-  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController) {
+  constructor(
+    public navCtrl: NavController,
+    public items: Items,
+    public modalCtrl: ModalController,
+    public http: RequestsProvider
+  ) {
     this.currentItems = this.items.query();
   }
 
@@ -21,6 +28,9 @@ export class ListMasterPage {
    * The view loaded, let's query our items for the list
    */
   ionViewDidLoad() {
+    this.http.getListAvailableDeliveries().subscribe(data => {
+      this.packages.push(data[0].result);
+    });
   }
 
   /**
@@ -28,12 +38,12 @@ export class ListMasterPage {
    * modal and then adds the new item to our data source if the user created one.
    */
   addItem() {
-    let addModal = this.modalCtrl.create('ItemCreatePage');
+    let addModal = this.modalCtrl.create("ItemCreatePage");
     addModal.onDidDismiss(item => {
       if (item) {
         this.items.add(item);
       }
-    })
+    });
     addModal.present();
   }
 
@@ -48,7 +58,7 @@ export class ListMasterPage {
    * Navigate to the detail page for this item.
    */
   openItem(item: Item) {
-    this.navCtrl.push('ItemDetailPage', {
+    this.navCtrl.push("ItemDetailPage", {
       item: item
     });
   }
