@@ -84,7 +84,14 @@ export class SettingsPage {
   patch(availablePackage: string){
     console.log(availablePackage)
     this.http.update(availablePackage).subscribe(data => {
-      console.log("foi", data);
+      this.http.getListAvailableDelivering().subscribe(data => {
+        let response: any;
+        response = data.result;
+  
+        this.availablePackages = new Array<Object>();
+        this.availablePackages = response;
+        console.log(this.availablePackages);
+      });
     });
   }
 
