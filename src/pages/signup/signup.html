@@ -8,10 +8,10 @@
       </ion-item>
 
       <ion-item>
+        <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
         <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
       </ion-item>
       <ion-item>
-          <ion-label floating>arquivo</ion-label>
           <ion-input type="file"  name="email"></ion-input>
         </ion-item>
 
@@ -28,7 +28,10 @@
         <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
         <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
       </ion-item>
-      <button (click)="takePicture()"> foto </button>
+      <ion-fab>
+          <button ion-fab (click)="takePicture()"> foto </button>
+        </ion-fab>
+      
       <div padding>
         <button class="loginBtn" ion-button color="primary" block>Cadastrar</button>
       </div>
