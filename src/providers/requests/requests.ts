@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs/Observable";
 
 /*
   Generated class for the RequestsProvider provider.
@@ -14,7 +15,13 @@ export class RequestsProvider {
     console.log("Hello RequestsProvider Provider");
   }
 
-  getListAvailableDeliveries() {
-    return this.http.get("https://loggibox.herokuapp.com/packets");
+  getDeliveryList(): Observable<Object> {
+    return this.http.get<Object>("https://loggibox.herokuapp.com/packets");
+  }
+
+  getListAvailableDeliveries(): Observable<Object> {
+    return this.http.get<Object>(
+      "https://loggibox.herokuapp.com/packets?delivered=true"
+    );
   }
 }

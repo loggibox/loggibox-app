@@ -2,12 +2,8 @@
   <ion-navbar>
     <ion-row style="display: flex; align-items: center;margin: 0px 10px;">
       <ion-title>LoggiBox</ion-title>
-      <img
-        src="../../assets/img/logo4.png"
-        alt=""
-        width="50"
-      />
-  </ion-row>
+      <img src="../../assets/img/logo4.png" alt="" width="50" />
+    </ion-row>
   </ion-navbar>
 </ion-header>
 
@@ -28,27 +24,33 @@
     </ion-list>
   -->
 
-  <ion-item>
-    <h2 class="sub-title">Entregas Disponiveis</h2>
-  </ion-item>
+  <ion-item> <h2 class="sub-title">Entregas Disponiveis</h2> </ion-item>
   <ion-item>
     <ion-list>
-      <ion-card style=" background-color: lightgray" (click)="detailsPackage()">
+      <ion-card
+        *ngFor="let availablePackage of availablePackages"
+        style=" background-color: lightgray"
+        (click)="detailsPackage()"
+      >
         <ion-item>
           <ion-row class="item-line">
-            <ion-col col-3>
+            <ion-col col-2>
               <ion-avatar item-start>
                 <img
                   src="http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-3/256/Package-Accept-icon.png"
                 />
               </ion-avatar>
             </ion-col>
-            <ion-col col-6>
-              <h2>Av. Paulista, 1340</h2>
-              <small>40 minutos</small>
-            </ion-col>
-            <ion-col col-3>
-              <h2 style="font-weight: bold;">R$ 7,98</h2>
+            <ion-col col-10>
+              <ion-row>
+                <h2>{{ availablePackage.delivery_address }}</h2>
+              </ion-row>
+              <ion-row>
+                <ion-col col-9> <small>40 minutos</small> </ion-col>
+                <ion-col col-3>
+                  <small>R$ {{ availablePackage.weight }} </small>
+                </ion-col>
+              </ion-row>
             </ion-col>
           </ion-row>
         </ion-item>

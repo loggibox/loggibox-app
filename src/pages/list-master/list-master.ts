@@ -28,8 +28,12 @@ export class ListMasterPage {
    * The view loaded, let's query our items for the list
    */
   ionViewDidLoad() {
-    this.http.getListAvailableDeliveries().subscribe(data => {
-      this.packages.push(data[0].result);
+    this.http.getDeliveryList().subscribe(data => {
+      let response: any;
+      response = data.result;
+
+      this.packages = new Array<Object>();
+      this.packages = response;
     });
   }
 
