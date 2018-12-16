@@ -6,23 +6,27 @@ page-list-master {
   display: flex;
   align-items: center;
 }
-ion-title{
+ion-title {
   font-family: Open sans;
   font-weight: bold !important;
-  color: #448FFB !important;
+  color: #448ffb !important;
   text-align: center;
 }
-.toolbar-title-md{
+.toolbar-title-md {
   font-weight: bold !important;
-  color: #448FFB !important;
+  color: #448ffb !important;
 }
-.card-md{
+.card-md {
   border-radius: 10px;
 }
-.sub-title{
-  margin-left: 10px; 
+.sub-title {
+  margin-left: 10px;
   color: orange;
   text-align: center;
   font-weight: bold !important;
   font-size: 20px !important;
+}
+
+ion-card img {
+  width: 30px !important;
 }

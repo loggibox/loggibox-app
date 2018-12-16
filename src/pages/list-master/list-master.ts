@@ -29,6 +29,7 @@ export class ListMasterPage {
    */
   ionViewDidLoad() {
     this.http.getDeliveryList().subscribe(data => {
+      console.log(data);
       let response: any;
       response = data.result;
 

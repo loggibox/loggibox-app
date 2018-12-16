@@ -24,33 +24,37 @@
     </ion-list>
   -->
 
-  <ion-item> <h2 class="sub-title">Entregas Disponiveis</h2> </ion-item>
+  <ion-item> <h2 class="sub-title">Entregas para retirar no HUB</h2> </ion-item>
   <ion-item>
     <ion-list>
       <ion-card
         *ngFor="let availablePackage of availablePackages"
         style=" background-color: lightgray"
-        (click)="detailsPackage()"
       >
         <ion-item>
           <ion-row class="item-line">
-            <ion-col col-2>
-              <ion-avatar item-start>
-                <img
-                  src="../../assets/img/package.png"
-                />
-              </ion-avatar>
-            </ion-col>
+            <!--
+              <ion-col col-2>
+                <ion-avatar item-start>
+                  <img src="../../assets/img/package.png" />
+                </ion-avatar>
+              </ion-col>
+            -->
             <ion-col col-10>
               <ion-row>
-                <h2>{{ availablePackage.delivery_address }}</h2>
+                <p>Endereço {{ availablePackage.delivery_address }}</p>
               </ion-row>
+              <ion-row> <p>Entrega em 11 minutos</p> </ion-row>
               <ion-row>
-                <ion-col col-9> <small>40 minutos</small> </ion-col>
-                <ion-col col-3>
-                  <small>R$ {{ availablePackage.weight }} </small>
-                </ion-col>
+                <p>Pago : R$ {{ availablePackage.weight }}</p>
               </ion-row>
+            </ion-col>
+            <ion-col col-2>
+              <ion-icon
+                (click)="detailsPackage()"
+                name="pin"
+                style="font-size: 40px; color: lightseagreen;"
+              ></ion-icon>
             </ion-col>
           </ion-row>
         </ion-item>
