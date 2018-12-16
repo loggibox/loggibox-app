@@ -1,3 +1,4 @@
+import { LoginPage } from "./../pages/login/login";
 import { Geolocation } from "@ionic-native/geolocation";
 import { ProductDetailsPage } from "./../pages/product-details/product-details";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
@@ -14,7 +15,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from "ionic-angular";
 import { Items } from "../mocks/providers/items";
 import { Settings, User, Api } from "../providers";
 import { MyApp } from "./app.component";
-import { RequestsProvider } from '../providers/requests/requests';
+import { RequestsProvider } from "../providers/requests/requests";
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -38,7 +39,7 @@ export function provideSettings(storage: Storage) {
 }
 
 @NgModule({
-  declarations: [MyApp, ProductDetailsPage],
+  declarations: [MyApp, ProductDetailsPage, LoginPage],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -53,7 +54,7 @@ export function provideSettings(storage: Storage) {
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
-  entryComponents: [MyApp, ProductDetailsPage],
+  entryComponents: [MyApp, ProductDetailsPage, LoginPage],
   providers: [
     Api,
     Items,
