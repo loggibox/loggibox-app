@@ -29,12 +29,9 @@ export class ListMasterPage {
    */
   ionViewDidLoad() {
     this.http.getDeliveryList().subscribe(data => {
-      console.log(data);
-      let response: any;
-      response = data.result;
-
+      const { result } = data;
       this.packages = new Array<Object>();
-      this.packages = response;
+      this.packages = result;
     });
   }
 
